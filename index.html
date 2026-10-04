@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerMesh Emergency Network</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header>
+        <div>
+            <div class="logo">🔗 PeerMesh</div>
+            <div class="subtitle">Emergency Communication Network</div>
+        </div>
+
+        <div class="offline">
+            ● OFFLINE
+        </div>
+    </header>
+
+
+    <!-- HOME -->
+    <section id="home" class="screen active">
+
+        <div class="hero">
+            <div class="radar">
+                <span>🚨</span>
+            </div>
+
+            <h1>Emergency<br><strong>Communication</strong></h1>
+
+            <p>
+                Stay connected when conventional networks fail.
+            </p>
+        </div>
+
+        <div class="network-card">
+            <div>
+                <small>NETWORK MODE</small>
+                <b>Offline / Peer-to-Peer</b>
+            </div>
+
+            <div>
+                <small>ACTIVE PEERS</small>
+                <b id="peerCount">0</b>
+            </div>
+        </div>
+
+        <button class="sos-button" onclick="showSOS()">
+            🚨 SEND EMERGENCY SOS
+        </button>
+
+        <div class="features">
+            <span>🔐 Secure</span>
+            <span>📍 Location</span>
+            <span>🔄 Store & Forward</span>
+        </div>
+
+    </section>
+
+
+    <!-- SOS -->
+    <section id="sos" class="screen">
+
+        <div class="page-title">
+            <span>🚨</span>
+            <div>
+                <h2>Create SOS</h2>
+                <small>Emergency information</small>
+            </div>
+        </div>
+
+        <div class="input-card">
+
+            <label>EMERGENCY TYPE</label>
+
+            <select id="emergency">
+                <option>Medical Emergency</option>
+                <option>Accident</option>
+                <option>Fire</option>
+                <option>Natural Disaster</option>
+                <option>Other</option>
+            </select>
+
+            <label>LOCATION</label>
+
+            <div class="location-box">
+                <span>📍</span>
+                <div>
+                    <b>Location detected</b>
+                    <small>Raipur, Chhattisgarh</small>
+                </div>
+                <span class="verified">✓</span>
+            </div>
+
+            <div class="security">
+                🔐 SOS payload will be encrypted
+            </div>
+
+        </div>
+
+        <button class="primary" onclick="sendSOS()">
+            SEND SOS NOW →
+        </button>
+
+        <button class="secondary" onclick="goHome()">
+            ← Cancel
+        </button>
+
+    </section>
+
+
+    <!-- NETWORK -->
+    <section id="network" class="screen">
+
+        <div class="page-title">
+            <span>📡</span>
+            <div>
+                <h2>Peer Network</h2>
+                <small>Finding communication paths...</small>
+            </div>
+        </div>
+
+        <div class="network-map">
+
+            <div class="node main-node">
+                <span>📱</span>
+                <b>YOU</b>
+                <small>SOS SOURCE</small>
+            </div>
+
+            <div class="connection c1"></div>
+
+            <div class="node peer-one">
+                <span>📱</span>
+                <b>PEER 1</b>
+                <small id="p1">SEARCHING</small>
+            </div>
+
+            <div class="connection c2"></div>
+
+            <div class="node peer-two">
+                <span>📱</span>
+                <b>PEER 2</b>
+                <small id="p2">WAITING</small>
+            </div>
+
+            <div class="connection c3"></div>
+
+            <div class="node rescue">
+                <span>🚑</span>
+                <b>RESCUE NODE</b>
+                <small id="rescueStatus">WAITING</small>
+            </div>
+
+        </div>
+
+        <div class="transmission">
+            <div class="pulse"></div>
+
+            <div>
+                <b id="networkMessage">Discovering nearby peers...</b>
+                <small id="networkSub">
+                    Establishing alternate communication path
+                </small>
+            </div>
+        </div>
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+        <button id="dashboardButton" class="primary hidden"
+                onclick="showDashboard()">
+            VIEW RESCUE DASHBOARD →
+        </button>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="screen">
+
+        <div class="page-title">
+            <span>🚑</span>
+            <div>
+                <h2>Rescue Dashboard</h2>
+                <small>Emergency response center</small>
+            </div>
+        </div>
+
+        <div class="alert-header">
+            <div>
+                <span class="live-dot"></span>
+                LIVE EMERGENCY ALERT
+            </div>
+
+            <b id="sosId">SOS #PM1024</b>
+        </div>
+
+        <div class="emergency-card">
+
+            <div class="emergency-top">
+                <div class="big-icon">🚨</div>
+
+                <div>
+                    <small>EMERGENCY TYPE</small>
+                    <h3 id="dashboardType">Medical Emergency</h3>
+                </div>
+            </div>
+
+            <div class="info-grid">
+
+                <div>
+                    <small>📍 LOCATION</small>
+                    <b>Raipur, Chhattisgarh</b>
+                </div>
+
+                <div>
+                    <small>📡 ROUTE</small>
+                    <b>3 Peer Devices</b>
+                </div>
+
+                <div>
+                    <small>🔐 SECURITY</small>
+                    <b>Encrypted</b>
+                </div>
+
+                <div>
+                    <small>⏱️ STATUS</small>
+                    <b>Delivered</b>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="delivery">
+            <div class="check">✓</div>
+
+            <div>
+                <b>SOS DELIVERED SUCCESSFULLY</b>
+                <small>Message reached rescue node through peer network</small>
+            </div>
+        </div>
+
+        <button class="primary" onclick="goHome()">
+            ↻ REPLAY DEMO
+        </button>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
